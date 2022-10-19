@@ -3,7 +3,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 // Properties
-const CANVAS_HEIGHT = 600;
+const CANVAS_HEIGHT = 1000;
 const CANVAS_WIDTH = 1000;
 const SQUARE_LENGTH = 50;
 
@@ -13,7 +13,10 @@ const SQUARES = ROWS * COLUMNS;
 
 // Config
 const start = [2, 2];
+const target = [4, 15];
 
+const rows = 12;
+const columns = 12;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
@@ -30,20 +33,19 @@ function drawNodes() {
     for (let i = 0; i < ROWS; i++) {
 
         for (let j = 0; j < COLUMNS; j++) {
-            console.log(i, j);
             ctx.rect(i * SQUARE_LENGTH, j * SQUARE_LENGTH, SQUARE_LENGTH, SQUARE_LENGTH);
             ctx.stroke();
         }
     }
 }
 
-function colorTypeOfSquare(type) {
+function typeOfSquareColor(type) {
     switch(type) {
         case 'start':
             ctx.fillStyle = 'green';
             ctx.stroke = 'green';
             break;
-        case 'end':
+        case 'target':
             ctx.fillStyle = 'red';
             ctx.stroke = 'red';
             break;
@@ -57,7 +59,7 @@ colorSquare = (row, column, type) => {
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
             if (i == column && j == row) {
-                colorTypeOfSquare(type);
+                typeOfSquareColor(type);
                 ctx.fillRect(i * SQUARE_LENGTH, j * SQUARE_LENGTH, SQUARE_LENGTH, SQUARE_LENGTH);
             }
         }
@@ -67,6 +69,7 @@ colorSquare = (row, column, type) => {
 
 
 drawNodes();
-colorSquare(start[0], start[1], 'end');
+colorSquare(start[0], start[1], 'start');
+colorSquare(target[0], target[1], 'target');
 
 
