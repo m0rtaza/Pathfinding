@@ -31,8 +31,8 @@ graph = {
 function drawNodes() {
 
     for (let i = 0; i < ROWS; i++) {
-
         for (let j = 0; j < COLUMNS; j++) {
+            console.log(i, j);
             ctx.rect(i * SQUARE_LENGTH, j * SQUARE_LENGTH, SQUARE_LENGTH, SQUARE_LENGTH);
             ctx.stroke();
         }
