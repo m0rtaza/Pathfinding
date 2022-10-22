@@ -11,15 +11,14 @@ const ROWS = CANVAS_WIDTH / SQUARE_LENGTH;
 const COLUMNS = CANVAS_HEIGHT / SQUARE_LENGTH;
 const SQUARES = ROWS * COLUMNS;
 
-// Config
+// Input
 const start = [2, 2];
 const target = [4, 15];
+const rows = 4;
+const columns = 4;
 
-const rows = 12;
-const columns = 12;
-
-canvas.width = CANVAS_WIDTH;
-canvas.height = CANVAS_HEIGHT;
+canvas.width = columns * SQUARE_LENGTH;
+canvas.height = rows * SQUARE_LENGTH;
 
 graph = {
     a: ['a', 'c'],
@@ -28,7 +27,7 @@ graph = {
 }
 
 
-function drawNodes() {
+function drawSquares() {
 
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
@@ -68,7 +67,7 @@ colorSquare = (row, column, type) => {
 
 
 
-drawNodes();
+drawSquares();
 colorSquare(start[0], start[1], 'start');
 colorSquare(target[0], target[1], 'target');
 
